@@ -58,7 +58,19 @@ public class EnemyAiTutorial : MonoBehaviour
     }
     private void SearchWalkPoint()
     {
+        /* for (int i = 0; i < 30; i++) 
+        {
         //Calculate random point in range
+        Vector3 randomDirection = Random.insideUnitSphere * walkPointRange;
+        randomDirection += transform.position;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomDirection, outhit, walkPointRange, NavMesh.AllAreas))
+        {
+            walkPoint = hit.position;
+            break; // Exit the loop if a valid point is found
+        }
+        } */
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
