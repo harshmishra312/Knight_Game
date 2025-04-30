@@ -1,4 +1,4 @@
-﻿ using UnityEngine;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -110,6 +110,22 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
+        //private bool canMove = true; // Add this line
+        /* public bool CanMove
+        {
+            get { return canMove; }
+            set 
+            { 
+                canMove = value;
+                Debug.Log (canMove);
+            }
+        } */
+
+        /* public void SetCanMoveTrue()
+        {
+            CanMove = true;
+        } */
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -213,6 +229,8 @@ namespace StarterAssets
 
         private void Move()
         {
+            //if (!CanMove) return; // Update to use the property
+
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 

@@ -8,10 +8,12 @@ public class Combat : MonoBehaviour
     public float comboResetTime = 1.0f; // Time before the combo resets
     private float lastAttackTime;
     private int noOfClicks = 0;
+    private StarterAssets.ThirdPersonController starterAssetsInputs; // Add this line
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        starterAssetsInputs = GetComponent<StarterAssets.ThirdPersonController>(); // Add this line
     }
 
     void Update()
@@ -59,6 +61,7 @@ public class Combat : MonoBehaviour
         if (noOfClicks == 1)
         {
             anim.SetBool("hit1", true);
+            /* starterAssetsInputs.CanMove = false; */ // Use the property
         }
     }
 
@@ -67,5 +70,6 @@ public class Combat : MonoBehaviour
         anim.SetBool("hit1", false);
         anim.SetBool("hit2", false);
         anim.SetBool("hit3", false);
+        /* starterAssetsInputs.CanMove = true */;
     }
 }

@@ -57,28 +57,39 @@ public class EnemyAiTutorial : MonoBehaviour
             walkPointSet = false;
     }
     private void SearchWalkPoint()
+{
+    for (int i = 0; i < 30; i++) // Max 30 attempts to find a valid point
     {
-        /* for (int i = 0; i < 30; i++) 
-        {
-        //Calculate random point in range
+        // Generate a random direction within the patrol range
         Vector3 randomDirection = Random.insideUnitSphere * walkPointRange;
-        randomDirection += transform.position;
+        randomDirection += transform.position; // Offset by the enemy's current position
 
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomDirection, outhit, walkPointRange, NavMesh.AllAreas))
+        NavMeshHit hit; // Declare NavMeshHit variable
+        if (NavMesh.SamplePosition(randomDirection, out hit, walkPointRange, NavMesh.AllAreas))
         {
-            walkPoint = hit.position;
-            break; // Exit the loop if a valid point is found
+            walkPoint = hit.position; // Assign the valid position from NavMeshHit
+
+            // Optional ground check to ensure it's on valid terrain
+            if (Physics.Raycast(walkPoint + Vector3.up * 2, -Vector3.up, 2f, whatIsGround))
+            {
+                walkPointSet = true; // Mark walkPoint as set
+                return; // Exit the method once a valid point is found
+            }
         }
-        } */
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+    }
+
+    walkPointSet = false; // Fallback if no valid point is found after attempts
+}
+
+        
+        /* float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
-    }
+            walkPointSet = true; */
+    
 
     private void ChasePlayer()
     {
