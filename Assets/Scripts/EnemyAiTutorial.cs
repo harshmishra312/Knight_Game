@@ -1,4 +1,4 @@
-﻿
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -70,7 +70,7 @@ public class EnemyAiTutorial : MonoBehaviour
             walkPoint = hit.position; // Assign the valid position from NavMeshHit
 
             // Optional ground check to ensure it's on valid terrain
-            if (Physics.Raycast(walkPoint + Vector3.up * 2, -Vector3.up, 2f, whatIsGround))
+            if (Physics.Raycast(walkPoint + Vector3.up * 2f, -Vector3.up, 2f, whatIsGround))
             {
                 walkPointSet = true; // Mark walkPoint as set
                 return; // Exit the method once a valid point is found
