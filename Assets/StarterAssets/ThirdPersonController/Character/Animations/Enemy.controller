@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: hit2
-  m_Speed: 2
+  m_Speed: 0.67
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2849404761013701}
@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 7577c567714b6344496e8394ad9ef4e0, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: e099dd6727d540a44849d761bed75a00, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -71,7 +71,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.49843264
   m_TransitionOffset: 0
   m_ExitTime: 0.8857868
   m_HasExitTime: 0
@@ -102,10 +102,10 @@ AnimatorStateMachine:
     m_Position: {x: -210, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 186131697149466315}
-    m_Position: {x: 500, y: 320, z: 0}
+    m_Position: {x: 530, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8362364190522190279}
-    m_Position: {x: 540, y: 430, z: 0}
+    m_Position: {x: 500, y: 510, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -418,7 +418,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: hit1
-  m_Speed: 2
+  m_Speed: 0.79
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8380255248961838058}
@@ -434,7 +434,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: 1181c596cf46b58409aa9e27d33c50c0, type: 3}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: Speed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -804,9 +804,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.51333666
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 0.6090384
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

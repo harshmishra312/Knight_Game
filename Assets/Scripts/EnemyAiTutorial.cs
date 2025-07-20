@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,16 +19,19 @@ public class EnemyAiTutorial : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
 
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    private int attackStep = 0; // 0 for hit1, 1 for hit2
+    private Animator animator;
+
     private void Awake()
     {
         player = GameObject.Find("PlayerArmature").transform;
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -100,24 +102,33 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
-
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 50f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
-
+            // Alternate between hit1 and hit2
+            if (attackStep == 0)
+            {
+                animator.SetBool("hit1", true);
+                animator.SetBool("hit2", false);
+                attackStep = 1;
+            }
+            else
+            {
+                animator.SetBool("hit1", false);
+                animator.SetBool("hit2", true);
+                attackStep = 0;
+            }
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
     private void ResetAttack()
     {
         alreadyAttacked = false;
+        animator.SetBool("hit1", false);
+        animator.SetBool("hit2", false);
     }
 
     public void TakeDamage(int damage)
